@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FABRIC_AUTO_CAPTURE=1 FABRIC_AGENT=claude-code python -m context_fabric.hooks"
+          }
+        ]
+      }
+    ]
+  }
+}

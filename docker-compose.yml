@@ -1,0 +1,22 @@
+services:
+  fabric:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      FABRIC_DB: /home/fabric/data/memory.sqlite
+      FABRIC_API_KEY: ${FABRIC_API_KEY:?Set FABRIC_API_KEY in .env}
+      FABRIC_TENANT: ${FABRIC_TENANT:-local}
+      FABRIC_AGENT: ${FABRIC_AGENT:-api}
+      FABRIC_SUBJECT: ${FABRIC_SUBJECT:-local-user}
+      FABRIC_ROLES: ${FABRIC_ROLES:-}
+    volumes:
+      - fabric_data:/home/fabric/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+volumes:
+  fabric_data:

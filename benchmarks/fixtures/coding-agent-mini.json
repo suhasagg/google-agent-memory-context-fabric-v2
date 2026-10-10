@@ -1,0 +1,27 @@
+{
+  "description": "Synthetic technical-memory smoke fixture. Not LongMemEval or LoCoMo.",
+  "documents": [
+    {"source_id":"d1","content":"Payment service persists invoices into PostgreSQL and caches sessions in Redis.","scope":{"project":"payments"}},
+    {"source_id":"d2","content":"The API uses JWT authentication signed with RS256; verify issuer and audience on every request.","scope":{"project":"payments"}},
+    {"source_id":"d3","content":"Post-deployment rollback restores the last green revision using Argo Rollouts.","scope":{"project":"infra"}},
+    {"source_id":"d4","content":"Incidents are paged via PagerDuty; on-call escalation starts after five minutes.","scope":{"project":"infra"}},
+    {"source_id":"d5","content":"The contract is audited by the security team before upgrading the Cosmos chain.","scope":{"project":"web3"}},
+    {"source_id":"d6","content":"Python unit tests run with pytest and linting is done using Ruff.","scope":{"project":"developer"}},
+    {"source_id":"d7","content":"The frontend uses React Router, CSS modules and responsive layout tokens.","scope":{"project":"ui"}},
+    {"source_id":"d8","content":"The search stack combines Elasticsearch keyword retrieval and Qdrant vector similarity.","scope":{"project":"search"}},
+    {"source_id":"d9","content":"Orders are published to Kafka, keyed by customer ID to preserve per-customer ordering.","scope":{"project":"payments"}},
+    {"source_id":"d10","content":"Prometheus gathers histogram metrics and Grafana displays p95 HTTP request latency.","scope":{"project":"infra"}},
+    {"source_id":"d11","content":"Test accounts are provisioned by the staging fixture with synthetic identities.","scope":{"project":"developer"}},
+    {"source_id":"d12","content":"We use an explicit ACL for every memory recall based on tenant, agent, purpose and clearance.","scope":{"project":"agent"}}
+  ],
+  "questions": [
+    {"query":"Where does payment service persist invoices?","scope":{"project":"payments"},"relevant_source_ids":["d1"]},
+    {"query":"What JWT signature algorithm does the API use?","scope":{"project":"payments"},"relevant_source_ids":["d2"]},
+    {"query":"How does rollback happen with Argo?","scope":{"project":"infra"},"relevant_source_ids":["d3"]},
+    {"query":"Which service handles on-call escalation?","scope":{"project":"infra"},"relevant_source_ids":["d4"]},
+    {"query":"Which tools run our Python tests and linting?","scope":{"project":"developer"},"relevant_source_ids":["d6"]},
+    {"query":"What controls access to agent memories?","scope":{"project":"agent"},"relevant_source_ids":["d12"]},
+    {"query":"How are order messages keyed on Kafka?","scope":{"project":"payments"},"relevant_source_ids":["d9"]},
+    {"query":"Where are p95 HTTP latency metrics collected?","scope":{"project":"infra"},"relevant_source_ids":["d10"]}
+  ]
+}

@@ -1,0 +1,40 @@
+# Single-node hardened pilot only. TLS termination and rate limiting required upstream.
+# Use docker compose -f deploy/compose.production.yml --env-file .env.production up --build -d
+services:
+  memory-fabric:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    user: '10001:10001'
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 1g
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+    ports:
+      - '127.0.0.1:8000:8000'
+    environment:
+      FABRIC_MODE: production
+      FABRIC_DB: /home/fabric/data/memory.sqlite
+      FABRIC_HASHED_CREDENTIALS_JSON: ${FABRIC_HASHED_CREDENTIALS_JSON:-}
+      FABRIC_OIDC_ISSUER: ${FABRIC_OIDC_ISSUER:-}
+      FABRIC_OIDC_JWKS_URL: ${FABRIC_OIDC_JWKS_URL:-}
+      FABRIC_OIDC_AUDIENCE: ${FABRIC_OIDC_AUDIENCE:-}
+      FABRIC_OIDC_ALLOWED_TENANTS: ${FABRIC_OIDC_ALLOWED_TENANTS:-}
+      FABRIC_OIDC_ALLOWED_ROLES: ${FABRIC_OIDC_ALLOWED_ROLES:-}
+      FABRIC_OIDC_MAX_CLEARANCE: ${FABRIC_OIDC_MAX_CLEARANCE:-INTERNAL}
+      FABRIC_AUDIT_HMAC_KEY: ${FABRIC_AUDIT_HMAC_KEY:?Set random 32+ character audit key}
+    volumes:
+      - fabric_data:/home/fabric/data
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 20s
+      timeout: 5s
+      retries: 4
+volumes:
+  fabric_data:

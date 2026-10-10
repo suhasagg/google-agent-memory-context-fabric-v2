@@ -1,0 +1,3 @@
+[mcp_servers.context-fabric]
+command = "fabric-mcp"
+env = { FABRIC_DB = "/ABSOLUTE/PATH/context-fabric.sqlite", FABRIC_TENANT = "my-team", FABRIC_AGENT = "codex" }

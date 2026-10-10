@@ -1,0 +1,10 @@
+{
+  "content": "Our checkout service uses OpenTelemetry tracing and PostgreSQL storage.",
+  "layer": "semantic",
+  "scope": {"project": "ecommerce"},
+  "source_type": "developer_note",
+  "source_id": "ADR-001",
+  "confidence": 0.95,
+  "ttl_days": 365,
+  "purpose": "context"
+}

@@ -1,0 +1,1 @@
+{"principal":{"tenant_id":"acme","subject_id":"u1","agent_id":"research-agent","roles":["memory.confidential"]},"query":"What database did Project Atlas choose?","layers":["episodic","semantic","entity","procedural"],"scope":{"user_id":"u1"},"purpose":"answer","limit":8}

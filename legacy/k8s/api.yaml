@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: memory-api, namespace: memory-fabric}
+spec:
+ replicas: 3
+ selector: {matchLabels: {app: memory-api}}
+ template:
+  metadata: {labels: {app: memory-api}}
+  spec:
+   containers:
+   - {name: api, image: "agent-memory-context-fabric:latest", ports: [{containerPort: 8000}]}

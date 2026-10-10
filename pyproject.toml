@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-agent-memory-context-fabric"
+version = "3.0.0rc1"
+description = "Governed persistent memory and retrieval control plane for multi-agent AI systems"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Suhas Aggarwal"}]
+keywords = ["agent-memory", "context-engineering", "mcp", "google-adk", "governance", "hybrid-retrieval"]
+# Standard-library core works offline without any model or cloud dependency.
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "pydantic>=2.8,<3"]
+oidc = ["PyJWT[crypto]>=2.9,<3"]
+mcp = ["mcp>=1.0,<2"]
+semantic = ["sentence-transformers>=3.0,<6"]
+server = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "pydantic>=2.8,<3", "PyJWT[crypto]>=2.9,<3"]
+dev = ["pytest>=8,<10", "httpx>=0.27,<1", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "PyJWT[crypto]>=2.9,<3"]
+
+[project.scripts]
+fabric = "context_fabric.cli:main"
+fabric-mcp = "context_fabric.mcp_server:main"
+fabric-evaluate = "context_fabric.evaluate:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+context_fabric = ["fixtures/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110

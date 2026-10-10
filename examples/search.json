@@ -1,0 +1,7 @@
+{
+  "query": "How does the checkout service persist data?",
+  "scope": {"project": "ecommerce"},
+  "limit": 5,
+  "token_budget": 600,
+  "graph_depth": 1
+}

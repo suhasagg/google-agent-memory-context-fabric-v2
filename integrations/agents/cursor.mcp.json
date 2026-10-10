@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "context-fabric": {
+      "command": "fabric-mcp",
+      "args": [],
+      "env": {
+        "FABRIC_DB": "/ABSOLUTE/PATH/context-fabric.sqlite",
+        "FABRIC_TENANT": "my-team",
+        "FABRIC_AGENT": "cursor"
+      }
+    }
+  }
+}
