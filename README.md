@@ -47,8 +47,7 @@ Most agent memory layers answer **“What should the agent remember?”** A prod
 - It is **not** a substitute for a production IdP, TLS gateway, rate limiter, SIEM or backup key management.
 - Hook capture is explicit opt-in and limited to approved prompt/summary fields, not 12+ transparent native hooks for every coding agent.
 - Its default hash-vector representation is **not semantic understanding**. Learned embeddings require separately installed and configured models.
-- The repository is **not proven better than** [rohitg00/agentmemory](https://github.com/rohitg00/agentmemory) on accuracy, automatic capture, adapter maturity or user adoption. See [comparison](#how-it-differs-from-agentmemory).
-
+- 
 ---
 
 ## Quick start
