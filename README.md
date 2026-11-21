@@ -15,6 +15,15 @@
 
 ---
 
+## 🎬 Product Demo — Google Agent Memory & Context Fabric
+
+[![Watch Product Demo](https://img.shields.io/badge/▶_Watch_Product_Demo-Loom-625DF5?style=for-the-badge)](https://www.loom.com/share/2b596fddcb7c44c28aa81ee4470a3bfd)
+
+Experience an enterprise-grade AI Memory & Context Fabric featuring persistent agent memory, hybrid RAG, Google ADK, MCP integrations, stateful multi-agent workflows, knowledge graphs, secure memory sharing, governance, and observability.
+
+**🎥 [Watch the Full 10-Minute Product Walkthrough](https://www.loom.com/share/2b596fddcb7c44c28aa81ee4470a3bfd)**
+
+
 ## Why a context fabric?
 
 Most agent memory layers answer **“What should the agent remember?”** A production organization must also answer:
